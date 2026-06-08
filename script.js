@@ -7,7 +7,7 @@ const content = {
     navSkills: "技能",
     navContact: "联系",
     heroEyebrow: "中国科学技术大学 · 大数据科学与技术",
-    heroTitle: "面向具身智能与自主导航的 AI 工程实践者",
+    heroTitle: "于书天",
     heroLead:
       "我关注机器人在复杂环境中的感知、决策与部署，正在寻找人工智能、机器人、数据工程相关实习与科研合作机会。",
     viewProjects: "查看项目",
@@ -126,7 +126,7 @@ const content = {
     navSkills: "Skills",
     navContact: "Contact",
     heroEyebrow: "University of Science and Technology of China · Big Data Science and Technology",
-    heroTitle: "AI engineering learner focused on embodied intelligence and autonomous navigation",
+    heroTitle: "Yushutian",
     heroLead:
       "I work across robot perception, decision-making, deployment, and data-driven systems, and I am seeking internship and research opportunities in AI, robotics, and data engineering.",
     viewProjects: "View projects",
@@ -310,6 +310,17 @@ function renderProjects(lang) {
       `
     )
     .join("");
+  bindProjectHighlights();
+}
+
+function bindProjectHighlights() {
+  document.querySelectorAll(".project-card").forEach((card) => {
+    card.addEventListener("pointermove", (event) => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty("--x", `${event.clientX - rect.left}px`);
+      card.style.setProperty("--y", `${event.clientY - rect.top}px`);
+    });
+  });
 }
 
 function renderTags(lang) {
